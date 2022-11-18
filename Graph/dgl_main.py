@@ -192,9 +192,6 @@ if __name__ == '__main__':
     parser.add_argument('--cuda', type=int, default=0)
     parser.add_argument('--dataset', default='zinc')
 
-    parser.add_argument('--rho', type=float, default=10.0)
-    parser.add_argument('--eig_poly', type=int, default=1)
-
     args = parser.parse_args()
     args.project_name = datetime.datetime.now().strftime('%m-%d-%X')
 
