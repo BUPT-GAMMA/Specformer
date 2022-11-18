@@ -101,8 +101,6 @@ def main_worker(args):
     rank = 'cuda:{}'.format(args.cuda)
     print(args)
 
-    wandb.init(project=args.dataset, entity='xxx', config=vars(args))
-
     datainfo = get_dataset(args.dataset)
     nclass = datainfo['num_class']
     loss_fn = datainfo['loss_fn']
@@ -164,7 +162,7 @@ def main_worker(args):
     results = []
     for epoch in range(args.epochs):
 
-        train_epoch(args.dataset, model, rank, train_dataloader, loss_fn, optimizer, wandb, wandb_item='loss')
+        train_epoch(args.dataset, model, rank, train_dataloader, loss_fn, optimizer, wandb=None, wandb_item='loss')
         scheduler.step()
 
         torch.save(model.state_dict(), 'checkpoint/{}_{}.pth'.format(args.project_name, epoch))
@@ -183,7 +181,7 @@ def main_worker(args):
 
             print(epoch, 'valid: {:.4f}'.format(val_res), 'test: {:.4f}'.format(test_res), 'best: {:.4f}'.format(best_res))
 
-            wandb.log({'val': val_res, 'test': test_res})
+            # wandb.log({'val': val_res, 'test': test_res})
 
     torch.save(model.state_dict(), 'checkpoint/{}.pth'.format(args.project_name))
 
