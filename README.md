@@ -16,7 +16,7 @@ If you make advantage of Specformer in your research, please cite the following 
   author={Deyu Bo and 
           Chuan Shi and
           Lele Wang and
-          Renjia Liao},
+          Renjie Liao},
   title={Specformer: Spectral Graph Neural Networks Meet Transformers},
   booktitle = {{ICLR}},
   publisher = {OpenReview.net},
